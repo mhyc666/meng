@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wangdh.mengm">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/timg"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.activity.WeChatListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.WebViewDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.CookBooksActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.JokeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.FunnyPicturesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.PicturesActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.MeizhiPictureActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.VideoListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" /> <!-- or android:screenOrientation="landscape"-->
+
+        <activity
+            android:name=".ui.activity.CookBooksListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.CookBooksDetails"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.HealthListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.WeatherActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.SearchWeatherActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.SearchCookBooksActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activity.PassWordActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 聊天页面 -->
+        <activity
+            android:name=".ui.activity.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateUnchanged|adjustPan" />
+
+        <!-- 好友 -->
+        <activity
+            android:name=".ui.activity.ContactListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateUnchanged|adjustPan"/>
+
+        <!-- 添加好友 -->
+        <activity
+            android:name=".ui.activity.AddContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateUnchanged|adjustPan" />
+
+        <activity android:name=".ui.activity.NewFriendsMsgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateUnchanged|adjustPan"/>
+
+        <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+        <!--bugly-->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.wangdh.mengm.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <!--bugly-->
+
+        <!-- 百度地图所需的service -->
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
+
+
+        <meta-data android:name="Mob-AppKey" android:value="21d914aa6b2d8"/>
+        <meta-data android:name="Mob-AppSecret" android:value="de9801147c2f0f7b963b43d9128ffc68"/>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Fu1Cdrz9tpft0xqAZ7IzpWG9FZ8k1uMU" >
+        </meta-data>
+
+
+
+        <!-- 设置环信应用的appkey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="mh666yc#mengm-mhyc666" />
+        <!-- 声明sdk所需的service -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true"
+            tools:ignore="ExportedService" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- 声明sdk所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- mi push -->
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedService" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
+
+        <receiver
+            android:name="com.hyphenate.chat.EMMipushReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.ERROR" />
+            </intent-filter>
+        </receiver>
+        <!-- mi push end -->
+
+    </application>
+
+</manifest>

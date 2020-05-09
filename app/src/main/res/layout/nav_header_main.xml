@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/side_image"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="@mipmap/splash"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/c_iv"
+            android:src="@mipmap/xmm"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginRight="50dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="3dp"
+        android:textIsSelectable="true"
+        android:gravity="center"
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="于易水送人一绝"
+        android:textColor="@color/tt"
+      />
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+            android:layout_below="@+id/tv_title"
+            android:textIsSelectable="true"
+            android:textColor="@color/tt"
+            android:gravity="center"
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="骆宾王" />
+        <TextView
+            android:layout_below="@+id/tv_name"
+            android:textIsSelectable="true"
+            android:textColor="@color/tt"
+            android:gravity="center"
+            android:id="@+id/tv_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="此地别燕丹,\n  壮士发冲冠。\n昔时人已没,\n   今日水犹寒。" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

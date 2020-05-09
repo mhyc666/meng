@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EasyAdapterLibrary/EasyAdapterLibrary.iml" filepath="$PROJECT_DIR$/EasyAdapterLibrary/EasyAdapterLibrary.iml" group="meng-master/EasyAdapterLibrary" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="meng-master/app" />
+      <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" group="meng-master/easeui" />
+      <module fileurl="file://$PROJECT_DIR$/meng-master.iml" filepath="$PROJECT_DIR$/meng-master.iml" group="meng-master" />
+    </modules>
+  </component>
+</project>

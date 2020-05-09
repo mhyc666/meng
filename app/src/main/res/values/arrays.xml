@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="category_name">
+        <item>头条</item>
+        <item>新闻</item>
+        <item>财经</item>
+        <item>体育</item>
+        <item>娱乐</item>
+        <item>军事</item>
+        <item>教育</item>
+        <item>科技</item>
+        <item>NBA</item>
+        <item>股票</item>
+        <item>星座</item>
+        <item>女性</item>
+        <item>健康</item>
+        <item>育儿</item>
+
+    </string-array>
+
+    <string-array name="category_type">
+        <item>__all__</item>
+        <item>video</item>
+        <item>news_hot</item>
+        <item>news_society</item>
+        <item>news_entertainment</item>
+        <item>news_tech</item>
+        <item>news_car</item>
+        <item>news_sports</item>
+        <item>news_finance</item>
+        <item>news_military</item>
+        <item>news_world</item>
+        <item>news_fashion</item>
+        <item>news_game</item>
+        <item>news_travel</item>
+    </string-array>
+
+
+    <string-array name="wechat_name">
+        <item>推荐</item>
+        <item>热门</item>
+        <item>体育迷</item>
+        <item>段子手</item>
+        <item>养生堂</item>
+        <item>私房话</item>
+        <item>八卦精</item>
+        <item>爱生活</item>
+        <item>财经迷</item>
+        <item>汽车迷</item>
+        <item>科技咖</item>
+        <item>潮人帮</item>
+        <item>辣妈帮</item>
+        <item>旅行家</item>
+        <item>职场人</item>
+        <item>美食家</item>
+        <item>古今通</item>
+        <item>学霸族</item>
+        <item>星座控</item>
+        <item>军事迷</item>
+        <item>搜索</item>
+    </string-array>
+
+    <string-array name="wechat_typeid">
+        <item>1</item>
+        <item>0</item>
+        <item>18</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>19</item>
+        <item>520</item>
+    </string-array>
+
+    <string-array name="wechat_type">
+        <item>wx_tj</item>
+        <item>wx_hot</item>
+        <item>wx_tym</item>
+        <item>wx_dzs</item>
+        <item>wx_yst</item>
+        <item>wx_sfh</item>
+        <item>wx_bgj</item>
+        <item>wx_ashh</item>
+        <item>wx_cj</item>
+        <item>wx_qcm</item>
+        <item>wx_kjk</item>
+        <item>wx_crb</item>
+        <item>wx_lmb</item>
+        <item>wx_lxj</item>
+        <item>wx_zcr</item>
+        <item>wx_msj</item>
+        <item>wx_gjt</item>
+        <item>wx_xbz</item>
+        <item>wx_xz</item>
+        <item>wx_dz</item>
+        <item>wx_ss</item>
+    </string-array>
+</resources>

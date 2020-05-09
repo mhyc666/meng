@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/tools">
+    <group android:id="@+id/g1">
+        <item
+            android:id="@+id/weatheritem"
+            android:checkable="true"
+            android:title="@string/tianq"
+            android:icon="@mipmap/tqyb"
+            android.support.design:itemTextColor="@color/nev_item"
+           />
+        <item
+            android:id="@+id/pictureitem"
+            android:checkable="true"
+            android:title="@string/meizi"
+            android:icon="@mipmap/mtu"
+            android.support.design:itemTextColor="@color/nev_item"/>
+
+        <item
+            android:id="@+id/videoiitem"
+            android:checkable="true"
+            android:title="@string/sping"
+            android:icon="@mipmap/sping"
+            android.support.design:itemTextColor="@color/nev_item" />
+    </group>
+
+    <item android:title="聊天">
+
+    <item
+        android:id="@+id/friend"
+        android:checkable="true"
+        android:icon="@mipmap/friend"
+        android:title="@string/friend"
+        android.support.design:itemTextColor="@color/nev_item" />
+    </item>
+
+    <!--<item android:title="设置">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_theme"-->
+                <!--android:icon="@drawable/ic_menu_theme"-->
+                <!--android:title="Theme"-->
+                <!--app:actionLayout="@layout/action_view_switch" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/settin"-->
+                <!--android:title="设置" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

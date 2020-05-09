@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_back"
+        android:icon="@mipmap/icon_news"
+        android:title="返回" />
+    <item
+        android:id="@+id/action_save"
+        android:icon="@mipmap/ic_save_white_24dp"
+        android:title="保存图片"/>
+    <!--<item-->
+        <!--android:id="@+id/action_email"-->
+        <!--android:icon="@mipmap/icon_news"-->
+        <!--android:title="@string/menu_item_email" />-->
+</menu>

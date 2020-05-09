@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@mipmap/v6_icon_search"
+        android:id="@+id/menu_search"
+        android:orderInCategory="80"
+        android:title="搜索"
+        app:showAsAction="always" />
+</menu>
