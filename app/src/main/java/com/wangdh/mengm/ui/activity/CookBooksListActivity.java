@@ -25,9 +25,12 @@ import com.wangdh.mengm.ui.contract.CookBooksListContract;
 import com.wangdh.mengm.utils.NetworkUtil;
 import com.wangdh.mengm.utils.RecyclerViewUtil;
 import com.wangdh.mengm.utils.ToolbarUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 
 public class CookBooksListActivity extends BaseActivity implements CookBooksListContract.View, BaseQuickAdapter.RequestLoadMoreListener {
@@ -44,8 +47,10 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
     @Inject
     CookBooksListPresenter mPresenter;
     private int start = 0, num = 20;
+    private boolean isRefresh;
     private String classid;
     private View errorView;
+
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
         DaggerActivityComponent.builder()
@@ -65,7 +70,7 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
         mSwipe.setColorSchemeResources(R.color.colorPrimaryDark2, R.color.btn_blue, R.color.ywlogin_colorPrimaryDark);//设置进度动画的颜色
         mSwipe.setProgressViewOffset(true, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         mSwipe.setOnRefreshListener(() -> {
-            itemdata.clear();
+            isRefresh = true;
             start = 0;
             mPresenter.getCookBooksListData(classid, String.valueOf(num), String.valueOf(start));
         });
@@ -80,8 +85,10 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
         );
 
         errorView = LayoutInflater.from(getContext()).inflate(R.layout.error_view, (ViewGroup) recycler.getParent(), false);
-        errorView.setOnClickListener(v -> {setDataRefresh(true);
-            mPresenter.getCookBooksListData(classid, String.valueOf(num), String.valueOf(start));});
+        errorView.setOnClickListener(v -> {
+            setDataRefresh(true);
+            mPresenter.getCookBooksListData(classid, String.valueOf(num), String.valueOf(start));
+        });
     }
 
     @Override
@@ -107,6 +114,7 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
 
     @Override
     public void showError(String s) {
+        isRefresh = false;
         toast(s);
         setDataRefresh(false);
         adapter.loadMoreFail();
@@ -121,6 +129,10 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
 
     @Override
     public void showCookBooksListData(CookBookslistData data) {
+        if (isRefresh) {
+            itemdata.clear();
+        }
+        isRefresh = false;
         if (data.getResult().getResult().getList().size() != 0) {
             itemdata.addAll(data.getResult().getResult().getList());
             adapter.notifyDataSetChanged();
@@ -146,9 +158,11 @@ public class CookBooksListActivity extends BaseActivity implements CookBooksList
             adapter.loadMoreEnd();
         }
     }
+
     public View getErrorView() {
         return errorView;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.searchmenu, menu);

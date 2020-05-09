@@ -42,6 +42,7 @@ public class HealthListActivity extends BaseActivity implements HealthListContra
     FloatingActionButton fab;
     private String id, name;
     private int page = 1;
+    private boolean isRefresh;
     @Inject
     HealthListPresenter mPresenter;
     private HealthListAdapter adapter;
@@ -66,7 +67,7 @@ public class HealthListActivity extends BaseActivity implements HealthListContra
         mSwipe.setColorSchemeResources(R.color.colorPrimaryDark2, R.color.btn_blue, R.color.ywlogin_colorPrimaryDark);//设置进度动画的颜色
         mSwipe.setProgressViewOffset(true, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         mSwipe.setOnRefreshListener(() -> {
-            itemData.clear();
+            isRefresh=true;
             page = 1;
             mPresenter.getHealthListData(id, String.valueOf(page));
         });
@@ -101,6 +102,7 @@ public class HealthListActivity extends BaseActivity implements HealthListContra
 
     @Override
     public void showError(String s) {
+        isRefresh=false;
         toast(s);
         setDataRefresh(false);
         adapter.setEmptyView(getErrorView());
@@ -113,6 +115,10 @@ public class HealthListActivity extends BaseActivity implements HealthListContra
 
     @Override
     public void showHealthListData(HealthitemListData data) {
+        if(isRefresh){
+            itemData.clear();
+        }
+        isRefresh=false;
         if (data.getShowapi_res_body().getPagebean().getContentlist() != null) {
             itemData.addAll(data.getShowapi_res_body().getPagebean().getContentlist());
             adapter.notifyDataSetChanged();

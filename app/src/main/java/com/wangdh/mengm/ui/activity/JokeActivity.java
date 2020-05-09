@@ -44,6 +44,7 @@ public class JokeActivity extends BaseActivity implements JokeActivityContract.V
     JokeActivityPresenter mPresenter;
     private JokeAdapter adapter;
     private int page = 1;
+    private boolean isRefresh;
     private View errorView;
 
     @Override
@@ -64,7 +65,7 @@ public class JokeActivity extends BaseActivity implements JokeActivityContract.V
         mSwipe.setColorSchemeResources(R.color.colorPrimaryDark2, R.color.btn_blue, R.color.ywlogin_colorPrimaryDark);//设置进度动画的颜色
         mSwipe.setProgressViewOffset(true, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         mSwipe.setOnRefreshListener(() -> {
-            mData.clear();
+            isRefresh=true;
             page = 1;
             mPresenter.getJokedata(page);
         });
@@ -91,6 +92,7 @@ public class JokeActivity extends BaseActivity implements JokeActivityContract.V
 
     @Override
     public void showError(String s) {
+       isRefresh=false;
         setDataRefresh(false);
         adapter.loadMoreEnd();
         toast(s);
@@ -104,6 +106,10 @@ public class JokeActivity extends BaseActivity implements JokeActivityContract.V
 
     @Override
     public void showJokedata(JokeData data) {
+        if(isRefresh){
+            mData.clear();
+        }
+        isRefresh=false;
         mData.addAll(data.getShowapi_res_body().getContentlist());
         adapter.notifyDataSetChanged();
         adapter.loadMoreComplete();

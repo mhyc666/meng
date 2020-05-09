@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wangdh.mengm.R;
 import com.wangdh.mengm.base.BaseFragment;
@@ -20,9 +21,12 @@ import com.wangdh.mengm.ui.adapter.FunnyPicturesApapter;
 import com.wangdh.mengm.ui.contract.FunnyPicturesFragmentContract;
 import com.wangdh.mengm.utils.NetworkUtil;
 import com.wangdh.mengm.utils.RecyclerViewUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 
 public class FunnyPicturesFragment extends BaseFragment implements FunnyPicturesFragmentContract.View, BaseQuickAdapter.RequestLoadMoreListener {
@@ -35,6 +39,8 @@ public class FunnyPicturesFragment extends BaseFragment implements FunnyPictures
     private FunnyPicturesApapter adapter;
     private List<FunnyPicturesData.ShowapiResBodyBean.ContentlistBean> mData = new ArrayList<>();
     private int page = 1;
+    private boolean isRefresh;
+
     @Inject
     FunnyPicturesPresenter mPresenter;
 
@@ -102,10 +108,11 @@ public class FunnyPicturesFragment extends BaseFragment implements FunnyPictures
 
     @Override
     public void showError(String s) {
+        isRefresh = false;
         hideDialog();
-        if(mSwipe!=null){
+        if (mSwipe != null) {
             mSwipe.setRefreshing(false);
-        }else {
+        } else {
             throw new NullPointerException("swipeRefreshLayout not null");
         }
         adapter.loadMoreEnd();
@@ -121,6 +128,10 @@ public class FunnyPicturesFragment extends BaseFragment implements FunnyPictures
 
     @Override
     public void showFunnyPicturesData(FunnyPicturesData data) {
+        if (isRefresh) {
+            mData.clear();
+        }
+        isRefresh = false;
         mData.addAll(data.getShowapi_res_body().getContentlist());
         adapter.notifyDataSetChanged();
     }
@@ -135,8 +146,8 @@ public class FunnyPicturesFragment extends BaseFragment implements FunnyPictures
     public void onLoadMoreRequested() {
         if (mData.size() >= 20) {
             recycler.postDelayed(() -> {
-                if (page>=1) {
-                    page=page+1;
+                if (page >= 1) {
+                    page = page + 1;
                     mPresenter.getFunnyPicturesData(mParam, String.valueOf(page++));
                 } else {
                     //获取更多数据失败
