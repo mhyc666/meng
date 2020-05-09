@@ -42,7 +42,8 @@ public class NewListFragment extends BaseFragment implements NewListContract.Vie
     private String mParam2;
     private List<NewListData.ResultBeanX.ResultBean.ListBean> itemdata = new ArrayList<>();
     private NewItemAdapter adapter;
-    private int start = 0, num = 20;
+    private int start = 1, num = 20;
+    private boolean isRefresh;
     @Inject
     NewListPresenter mPresenter;
     private View errorView;
@@ -89,7 +90,8 @@ public class NewListFragment extends BaseFragment implements NewListContract.Vie
         mSwipe.setColorSchemeResources(R.color.colorPrimaryDark2, R.color.btn_blue, R.color.ywlogin_colorPrimaryDark);//设置进度动画的颜色
         mSwipe.setProgressViewOffset(true, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         mSwipe.setOnRefreshListener(() -> {
-            itemdata.clear();
+            isRefresh=true;
+            start=1;
             mPresenter.getNewlistData(mParam1, String.valueOf(num), String.valueOf(start));
         });
         setDataRefresh(true);
@@ -123,6 +125,7 @@ public class NewListFragment extends BaseFragment implements NewListContract.Vie
 
     @Override
     public void showError(String s) {
+        isRefresh=false;
         setDataRefresh(false);
         adapter.loadMoreEnd();
         adapter.setEmptyView(getErrorView());
@@ -136,6 +139,10 @@ public class NewListFragment extends BaseFragment implements NewListContract.Vie
 
     @Override
     public void showNewlistData(NewListData data) {
+        if(isRefresh){
+            itemdata.clear();
+        }
+        isRefresh=false;
         itemdata.addAll(data.getResult().getResult().getList());
         adapter.notifyDataSetChanged();
         adapter.loadMoreComplete();
